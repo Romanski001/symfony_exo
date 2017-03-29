@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Importances list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Niveau</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for importance in importances %}
+            <tr>
+                <td><a href="{{ path('importance_show', { 'id': importance.id }) }}">{{ importance.id }}</a></td>
+                <td>{{ importance.nom }}</td>
+                <td>{{ importance.niveau }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('importance_show', { 'id': importance.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('importance_edit', { 'id': importance.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('importance_new') }}">Create a new importance</a>
+        </li>
+    </ul>
+{% endblock %}
